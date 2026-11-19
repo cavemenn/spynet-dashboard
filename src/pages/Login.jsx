@@ -21,36 +21,53 @@ export default function Login() {
     }
 
     return (
-        <Container>
-        <h1 className="my-3">Login Page</h1>
-        <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                    type="email"
-                    placeholder="Enter email"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                <Form.Text className="text-muted">
-                    We'll share ALL your privacy data with everyone else.
-                </Form.Text>
-            </Form.Group>
+        <Container className="d-flex justify-content-center align-items-center min-vh-100">
+            <div className="position-relative w-100" style={{ maxWidth: "600px" }}>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </Form.Group>
+                <div className="text-center position-absolute w-100" style={{ bottom: "90%", left: 0 }}>
+                    <img
+                        src="/logo.png"
+                        alt="Logo"
+                        style={{ width: "300px", height: "auto" }}
+                    />
+                </div>
 
-            <Button variant="primary" onClick={login}>
-                Submit
-            </Button>
-        </Form>
+                <div className="bg-white p-4 rounded shadow w-100" style={{ maxWidth: "600px" }}>
+                    <h1 className="mb-3 text-center">Login Credentials</h1>
+                    <Form>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control
+                                type="email"
+                                placeholder="Enter email"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+                            <Form.Text className="text-muted">
+                                We'll share ALL your privacy data with everyone else.
+                            </Form.Text>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control
+                                type="password"
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </Form.Group>
+
+                        <div className="d-flex justify-content-center">
+                            <Button variant="primary" size="lg" onClick={login}>
+                                Submit
+                            </Button>
+                        </div>
+                    </Form>
+                </div>
+
+            </div>
+            
         </Container>
   );
 }

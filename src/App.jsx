@@ -13,6 +13,8 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ErrorPage from "./pages/ErrorPage";
 
+import "./App.css";
+
 
 export default function App() {
   const [token, setToken] = useLocalStorage("token", null);
