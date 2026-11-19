@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // If you haven't already, install the required dependencies:
 // npm install react-bootstrap bootstrap react-router-dom
+// npm install usehooks-ts
 
 import { AuthContext } from "./AuthContext";
 import RequireAuth from "./components/RequireAuth";
