@@ -1,12 +1,13 @@
 import { Container, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useLocalStorage } from "usehooks-ts";
 
 import devices from "../data/devices.json";
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const [deviceList, setDeviceList] = useState(devices);
+  const [deviceList, setDeviceList] = useLocalStorage("deviceList", devices);
 
   const role = localStorage.getItem("role");
   const isAdmin = role === "admin"; // Check if the user is an admin
@@ -24,7 +25,7 @@ export default function Dashboard() {
       alert("You do not have permission to perform this action.");
       return;
     }
-    
+
     const updatedDevices = deviceList.map((device) => {
       if (device.id === deviceId) {
         if (device.status === "Online") {
