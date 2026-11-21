@@ -1,19 +1,22 @@
 import { Container, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext } from "react";
 import { useLocalStorage } from "usehooks-ts";
+import { AuthContext } from "../AuthContext";
 
 import devices from "../data/devices.json";
 
 export default function Dashboard() {
   const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
+
   const [deviceList, setDeviceList] = useLocalStorage("deviceList", devices);
 
   const role = localStorage.getItem("role");
   const isAdmin = role === "admin"; // Check if the user is an admin
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    authContext.setToken(null);
     localStorage.removeItem("role");
     navigate("/"); 
   }
