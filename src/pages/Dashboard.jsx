@@ -1,6 +1,6 @@
-import { Container, Button, Card, CardBody } from "react-bootstrap";
+import { Container, Button, Card, CardBody, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { useLocalStorage } from "usehooks-ts";
 import { AuthContext } from "../AuthContext";
 
@@ -14,6 +14,12 @@ export default function Dashboard() {
 
   const role = localStorage.getItem("role");
   const isAdmin = role === "admin"; // Check if the user is an admin
+
+  const onlineCount = deviceList.filter((d) => d.status === "Online").length;
+  const offlineCount = deviceList.filter((d) => d.status === "Offline").length;
+
+  const [filter, setFilter] = useState("All");
+  const filteredDevices = filter === "All" ? deviceList : deviceList.filter((d) => d.status === filter)
 
   const handleLogout = () => {
     authContext.setToken(null);
@@ -53,6 +59,37 @@ export default function Dashboard() {
         </Button>
       </div>
 
+      <Row className="mb-3"> //each row split into 12 equal parts
+        <Col xs={6}> //takes up 6 parts of the row
+          <Card className="text-center shadow">
+            <Card.Body>
+              <Card.Title>Online Devices</Card.Title>
+              <h2 className="text-success">{onlineCount}</h2>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col xs={6}>
+          <Card className="text-center shadow">
+            <Card.Body>
+              <Card.Title>Offline Devices</Card.Title>
+              <h2 className="text-danger">{offlineCount}</h2>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+
+      <div className="d-flex gap-2 mb-3">
+        {["All", "Online", "Offline"].map((option) => (
+          <Button
+            key={option}
+            variant={filter === option ? "light" : "outline-light"}
+            onClick={() => setFilter(option)}
+          >
+            {option}
+          </Button>
+        ))}
+      </div>
+
       <div
         className="af-grid"
         style={{
@@ -63,7 +100,7 @@ export default function Dashboard() {
           color: "white",
         }}
       >
-        {deviceList.map((device) => (
+        {filteredDevices.map((device) => (
           <Card key={device.id} className="af-grid-item">
             <Card.Img
               variant="top"
@@ -76,7 +113,7 @@ export default function Dashboard() {
               <Card.Text className="mb-1">Status: {device.status}</Card.Text>
               <Card.Text>Message: {device.message}</Card.Text>
               <Button 
-                variant={device.status === "Online" ? "danger" : "success"}
+                variant={device.status === "Online" ? "success" : "danger"}
                 onClick={() => handleDeviceToggle(device.id)}
                 >
                   {device.status === "Online" ? "Turn Off" : "Turn On"}
