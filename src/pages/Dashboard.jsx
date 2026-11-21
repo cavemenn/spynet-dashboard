@@ -8,13 +8,23 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const [deviceList, setDeviceList] = useState(devices);
 
+  const role = localStorage.getItem("role");
+  const isAdmin = role === "admin"; // Check if the user is an admin
+
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("role");
     navigate("/"); 
   }
 
   const handleDeviceToggle = (deviceId) => {
     // Implementation for toggling device status
+
+    if (!isAdmin) {
+      alert("You do not have permission to perform this action.");
+      return;
+    }
+    
     const updatedDevices = deviceList.map((device) => {
       if (device.id === deviceId) {
         if (device.status === "Online") {

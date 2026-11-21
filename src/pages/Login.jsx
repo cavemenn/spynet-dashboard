@@ -4,6 +4,19 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthContext";
 
+const users = [
+    {
+        username: "john@mail.com",
+        password: "admin",
+        role: "admin"
+    },
+    {
+        username: "guest@mail.com",
+        password: "guest",
+        role: "guest"
+    }
+];
+
 export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -11,11 +24,11 @@ export default function Login() {
     const authContext = useContext(AuthContext);
 
     function login() {
-        const isUsernameCorrect = username === "john@mail.com";
-        const isPasswordCorrect = password === "admin";
+        const findWhichUser = users.find((user) => user.username === username && user.password === password);
 
-        if (isUsernameCorrect && isPasswordCorrect) {
+        if (findWhichUser) {
             authContext.setToken("1234");
+            localStorage.setItem("role", findWhichUser.role);
             navigate("/dashboard");
         }
     }
