@@ -1,0 +1,72 @@
+[
+    {
+        "id": "device1",
+        "location": "Living Room",
+        "status": "Online",
+        "message": "Recording",
+        "image": "/devices_pics/livingRoom.jpeg"
+    },
+    {
+        "id": "device2",
+        "location": "Kitchen",
+        "status": "Offline",
+        "message": "No Signal",
+        "image": "/devices_pics/kitchen.webp"
+    },
+    {
+        "id": "device3",
+        "location": "Bedroom",
+        "status": "Online",
+        "message": "Idle",
+        "image": "/devices_pics/bedroom.jpg"
+    },
+    {
+        "id": "device4",
+        "location": "Garage",
+        "status": "Online",
+        "message": "Streaming",
+        "image": "/devices_pics/garage.jpeg"
+    },
+    {
+        "id": "device5",
+        "location": "Office",
+        "status": "Offline",
+        "message": "Disconnected",
+        "image": "/devices_pics/office.jpg"
+    },
+    {
+        "id": "device6",
+        "location": "Bathroom",
+        "status": "Online",
+        "message": "Monitoring",
+        "image": "/devices_pics/bathroom.jpeg"
+    },
+    {
+        "id": "device7",
+        "location": "Patio",
+        "status": "Online",
+        "message": "Recording",
+        "image": "/devices_pics/patio.jpeg"
+    },
+    {
+        "id": "device8",
+        "location": "Basement",
+        "status": "Offline",
+        "message": "No Signal",
+        "image": "/devices_pics/basement.jpg"
+    },
+    {
+        "id": "device9",
+        "location": "Attic",
+        "status": "Online",
+        "message": "Idle",
+        "image": "/devices_pics/attic.jpeg"
+    },
+    {
+        "id": "device10",
+        "location": "Hallway",
+        "status": "Online",
+        "message": "Streaming",
+        "image": "/devices_pics/hallway.jpeg"
+    }
+]
