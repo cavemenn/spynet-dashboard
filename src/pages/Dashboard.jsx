@@ -1,4 +1,4 @@
-import { Container, Button } from "react-bootstrap";
+import { Container, Button, Card, CardBody } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { useLocalStorage } from "usehooks-ts";
@@ -34,7 +34,7 @@ export default function Dashboard() {
         if (device.status === "Online") {
           return { ...device, status: "Offline", message: "Turned off" };
         } else {
-          return { ...device, status: "Online", message: "Turned on" };
+          return { ...device, status: "Online", message: "Recording" };
         }
       }
       return device;
@@ -44,12 +44,14 @@ export default function Dashboard() {
 
   return (
     <Container>
-      <h1 className="my-3" style={{ color: "white" }}>
-        Dashboard Page
-      </h1>
-      <Button variant="danger" onClick={handleLogout}>
-        Logout
-      </Button>
+      <div className="d-flex justify-content-between align-items-center my-3">
+        <h1 className="my-3" style={{ color: "white" }}>
+          Welcome to SpyNet, You have the power of a {role.toUpperCase()}
+        </h1>
+        <Button variant="danger" onClick={handleLogout}>
+          Logout
+        </Button>
+      </div>
 
       <div
         className="af-grid"
@@ -62,19 +64,25 @@ export default function Dashboard() {
         }}
       >
         {deviceList.map((device) => (
-          <div key={device.id} className="af-grid-item">
-            <img
+          <Card key={device.id} className="af-grid-item">
+            <Card.Img
+              variant="top"
               src={device.image}
               alt={device.location}
-              style={{ width: "100%", height: "180px", objectFit: "cover", borderRadius: "8px" }}
+              style={{height: "180px", objectFit: "cover"}}
             />
-            <h3>{device.location}</h3>
-            <p>Status: {device.status}</p>
-            <p>Message: {device.message}</p>
-            <Button onClick={() => handleDeviceToggle(device.id)}>
-              {device.status === "Online" ? "Turn Off" : "Turn On"}
-            </Button>
-          </div>
+            <CardBody className="d-flex flex-column">
+              <Card.Title>{device.location}</Card.Title>
+              <Card.Text className="mb-1">Status: {device.status}</Card.Text>
+              <Card.Text>Message: {device.message}</Card.Text>
+              <Button 
+                variant={device.status === "Online" ? "danger" : "success"}
+                onClick={() => handleDeviceToggle(device.id)}
+                >
+                  {device.status === "Online" ? "Turn Off" : "Turn On"}
+              </Button>
+            </CardBody>
+          </Card>
         ))}
       </div>
     </Container>
