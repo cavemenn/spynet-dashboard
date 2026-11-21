@@ -59,8 +59,8 @@ export default function Dashboard() {
         </Button>
       </div>
 
-      <Row className="mb-3"> //each row split into 12 equal parts
-        <Col xs={6}> //takes up 6 parts of the row
+      <Row className="mb-3"> {/* each row split into 12 equal parts */}
+        <Col xs={6}> {/* takes up 6 parts of the row */}
           <Card className="text-center shadow">
             <Card.Body>
               <Card.Title>Online Devices</Card.Title>
