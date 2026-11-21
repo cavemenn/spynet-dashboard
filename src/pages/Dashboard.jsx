@@ -1,15 +1,32 @@
 import { Container, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import devices from "../data/devices.json";
 
 export default function Dashboard() {
   const navigate = useNavigate();
+  const [deviceList, setDeviceList] = useState(devices);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/"); 
   }
+
+  const handleDeviceToggle = (deviceId) => {
+    // Implementation for toggling device status
+    const updatedDevices = deviceList.map((device) => {
+      if (device.id === deviceId) {
+        if (device.status === "Online") {
+          return { ...device, status: "Offline", message: "Turned off" };
+        } else {
+          return { ...device, status: "Online", message: "Turned on" };
+        }
+      }
+      return device;
+    });
+    setDeviceList(updatedDevices);
+  };
 
   return (
     <Container>
@@ -30,7 +47,7 @@ export default function Dashboard() {
           color: "white",
         }}
       >
-        {devices.map((device) => (
+        {deviceList.map((device) => (
           <div key={device.id} className="af-grid-item">
             <img
               src={device.image}
@@ -40,6 +57,9 @@ export default function Dashboard() {
             <h3>{device.location}</h3>
             <p>Status: {device.status}</p>
             <p>Message: {device.message}</p>
+            <Button onClick={() => handleDeviceToggle(device.id)}>
+              {device.status === "Online" ? "Turn Off" : "Turn On"}
+            </Button>
           </div>
         ))}
       </div>

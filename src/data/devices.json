@@ -10,35 +10,35 @@
         "id": "device2",
         "location": "Kitchen",
         "status": "Offline",
-        "message": "No Signal",
+        "message": "Turned off",
         "image": "/devices_pics/kitchen.webp"
     },
     {
         "id": "device3",
         "location": "Bedroom",
         "status": "Online",
-        "message": "Idle",
+        "message": "Recording",
         "image": "/devices_pics/bedroom.jpg"
     },
     {
         "id": "device4",
         "location": "Garage",
         "status": "Online",
-        "message": "Streaming",
+        "message": "Recording",
         "image": "/devices_pics/garage.jpeg"
     },
     {
         "id": "device5",
         "location": "Office",
         "status": "Offline",
-        "message": "Disconnected",
+        "message": "Turned off",
         "image": "/devices_pics/office.jpg"
     },
     {
         "id": "device6",
         "location": "Bathroom",
         "status": "Online",
-        "message": "Monitoring",
+        "message": "Recording",
         "image": "/devices_pics/bathroom.jpeg"
     },
     {
@@ -52,21 +52,21 @@
         "id": "device8",
         "location": "Basement",
         "status": "Offline",
-        "message": "No Signal",
+        "message": "Turned off",
         "image": "/devices_pics/basement.jpg"
     },
     {
         "id": "device9",
         "location": "Attic",
         "status": "Online",
-        "message": "Idle",
+        "message": "Recording",
         "image": "/devices_pics/attic.jpeg"
     },
     {
         "id": "device10",
         "location": "Hallway",
         "status": "Online",
-        "message": "Streaming",
+        "message": "Recording",
         "image": "/devices_pics/hallway.jpeg"
     }
 ]
